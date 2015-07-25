@@ -1,54 +1,6 @@
 /* CSS declarations go here */
-#diagramContainer {
-    padding: 20px;
-    width:100%;
-    min-height: 480px;
-    resize:both;
-    overflow: auto;
-    border: 1px solid gray;
-    /*overflow: auto;*/
-    position: relative;
-}
-.no_selection {
-    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-    -moz-user-select: none; /* mozilla browsers */
-    -khtml-user-select: none; /* webkit (konqueror) browsers */
-    -ms-user-select: none; /* IE10+ */
-}
 
-.node {
-    /*position: absolute;*/
-    height:100px;
-    min-width: 100px;
-    padding: 5px;
-    font-weight: bold;
-    /*border: 1px solid blue;*/
-    /*color:white;*/
-    text-align: center;
-    cursor: move;
-    /*cursor: grab;
-    cursor: -webkit-grab;*/
-    border-radius: 11px;
-    /*font-size: 50% !important;*/
-}
-.node-info {
-  padding:5%;
-  color: white;
-  /*line-height: 70px;*/
-}
-.node-info strong{
-  border-bottom: 1px dotted white;
-}
 
-#diagramContainer.connectionModeOn{
-  border: 5px solid blue;
-}
-#diagramContainer.connectionModeOn .node:not(.unselectable){
-  cursor: pointer;
-}
-#diagramContainer.connectionModeOn .node.active{
-  cursor: pointer;
-}
 #nodeProperties {
   width: 30%;
   float:right;
@@ -57,14 +9,14 @@
 /*#diagramContainer.connectionModeOn .node:not(.unselectable) {
   cursor: pointer;
 }*/
-.node.activeForEditing {
-  text-decoration: underline;
-  font-style: italic;
-  font-weight: bolder;
-  background: grey;
-  border: 5px dotted black;
-  padding: 10px;
-}
+// .node.activeForEditing {
+//   text-decoration: underline;
+//   font-style: italic;
+//   font-weight: bolder;
+//   background: grey;
+//   border: 5px dotted black;
+//   padding: 10px;
+// }
 .node.activeAsSrc {
   border: 1px solid black;
   -webkit-box-shadow: -1px 1px 13px 3px black;
@@ -76,11 +28,6 @@ box-shadow: -1px 1px 13px 3px black;
   cursor: not-allowed;
   background: rgb(157, 150, 166);
 }
-/****************************************/
-.block {
-  position: absolute;
-}
-/*****************************************/
 .node.Indicator {
   background: #1672aa;
 }
@@ -108,6 +55,53 @@ box-shadow: -1px 1px 13px 3px black;
   display: none;
 }
 /***********************  NEW   ***************************/
+#diagramContainer
+  padding: 20px;
+  width:100%;
+  min-height: 480px;
+  resize:both;
+  overflow: auto;
+  border: 1px solid gray;
+  /*overflow: auto;*/
+  position: relative;
+  &.no_selection
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -khtml-user-select: none; /* webkit (konqueror) browsers */
+    -ms-user-select: none; /* IE10+ */
+  // &.connectionModeOn
+  //   border: 5px solid blue;
+  //     .node:not(.unselectable)
+  //       cursor: pointer;
+  //     .node.active
+  //       cursor: pointer;
+
+
+.node
+  /*position: absolute;*/
+  height:100px;
+  min-width: 100px;
+  padding: 5px;
+  font-weight: bold;
+  /*border: 1px solid blue;*/
+  /*color:white;*/
+  text-align: center;
+  cursor: move;
+  /*cursor: grab;
+  cursor: -webkit-grab;*/
+  border-radius: 11px;
+  /*font-size: 50% !important;*/
+
+.block
+  position: absolute;
+
+.node-info
+  padding:5%;
+  color: white;
+  /*line-height: 70px;*/
+  & strong
+    border-bottom: 1px dotted white;
+
 .currentNode
   height: 100px;
   border: 1px solid black;
