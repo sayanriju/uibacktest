@@ -1,0 +1,15 @@
+<template name="nodeContent">
+    <!-- <h4>{{labelType type}}</h4> -->
+    <div class="node-info">
+      <strong>{{type}}</strong>
+      <p>{{label}}</p>
+    </div>
+    {{#if isCurrentNode}}
+    <div class="row node-bar">
+      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
+      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
+      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
+      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
+    </div>
+    {{/if}}
+</template>

@@ -1,0 +1,13 @@
+/* CSS declarations go here */
+#mydiv{
+  width:200px;
+  height: 200px;
+  border: 1px solid black;
+  color:black;
+}
+#mydiv.test1 {
+  background: yellow;
+}
+#mydiv.test2{
+  color: red;
+}

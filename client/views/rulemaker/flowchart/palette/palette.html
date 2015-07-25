@@ -1,0 +1,13 @@
+<template name="palette">
+  {{#unless Template.subscriptionsReady}}
+    {{> spinner}}
+  {{else}}
+    <div style="margin:3em;">
+      <div>
+        {{#each addableNodes}}
+        <div class='btn btn-info addableNode' data-node-type='{{type}}'>{{labelType type}}</div><br/><br/>
+        {{/each}}
+      </div>
+    </div>
+  {{/unless}}
+</template>
