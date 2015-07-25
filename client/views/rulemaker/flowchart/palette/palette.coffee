@@ -3,8 +3,8 @@ Template.palette.onCreated ->
 
 
 Template.palette.helpers
-  addableNodes: ->
-    objectFactory.find({}, {fields: {'type': 1}, sort: {'type': 1}})
+  addableNodes: (klass) ->
+    objectFactory.find({'klass': klass}, {fields: {'type': 1}, sort: {'type': 1}})
 
   labelType: (type) ->
     if type[0..5] is "Signal"
