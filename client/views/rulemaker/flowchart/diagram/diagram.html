@@ -1,8 +1,8 @@
 <template name="diagram">
   <div id="diagramContainer" class="row no_selection {{#if connectionModeOn}}connectionModeOn{{/if}}" style="border:1px solid black;">
-    {{welcomeMessage}}
+    <div class="welcomeMessage">{{welcomeMessage}}</div>
     {{#each nodes}}
-      <div class="node block {{type}} {{#if isCurrentNode}}currentNode{{/if}} {{#if isSrcNode}}activeAsSrc{{/if}} {{#if unselectable}}unselectable disabled{{/if}}" id="{{_id}}" style="top: {{top}}px; left: {{left}}px;">
+      <div class="node block {{type}} {{#if isCurrentNode}}currentNode{{/if}} {{#if isSrcNode}}activeAsSrc{{/if}} {{#if cantBeDest}}cantBeDest disabled{{/if}}" id="{{_id}}" style="top: {{top}}px; left: {{left}}px;">
         {{> nodeContent this}}
       </div>
     {{/each}}

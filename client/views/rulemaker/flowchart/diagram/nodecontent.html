@@ -1,15 +1,15 @@
 <template name="nodeContent">
     <!-- <h4>{{labelType type}}</h4> -->
-    <div class="node-info">
+    <div class="row node-info">
       <strong>{{type}}</strong>
       <p>{{label}}</p>
     </div>
-    {{#if isCurrentNode}}
-    <div class="row node-bar">
-      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
-      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
-      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
-      <i class="col-lg-3 fa fa-plus data-node-id='{{_id}}'"></i>
+    <!-- {{#if showNodeBar}} -->
+    <div class="node-bar" style="{{#unless showNodeBar}}display:none;{{/unless}}">
+      <i class="editLabel fa fa-font" data-node-id='{{_id}}' data-toggle="tooltip" title="Edit Label"></i>
+      <i class="editProps fa fa-list" data-node-id='{{_id}}' data-toggle="tooltip" title="Edit Properties"></i>
+      <i class="connectNode fa fa-long-arrow-right {{#if cantBeSrc}}text-muted cantBeSrc{{/if}}" data-node-id='{{_id}}' data-toggle="tooltip" title="Connect"></i>
+      <i class="deleteNode fa fa-trash" data-node-id='{{_id}}' data-toggle="tooltip" title="Delete"></i>
     </div>
-    {{/if}}
+    <!-- {{/if}} -->
 </template>

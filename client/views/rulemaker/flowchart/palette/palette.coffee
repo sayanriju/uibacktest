@@ -21,4 +21,4 @@ Template.palette.events
     newNode.label = label
 
     localNodes.insert newNode
-    console.log localNodes.find().fetch()
+    # console.log localNodes.find().fetch()
