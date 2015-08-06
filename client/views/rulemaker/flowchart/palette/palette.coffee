@@ -8,7 +8,7 @@ Template.palette.onRendered ->
 Template.palette.helpers
   addableNodes: () ->
     klass = Template.instance().whichKlass.get()
-    console.log klass
+    # console.log klass
     # objectFactory.find({'klass': klass}, {fields: {'type': 1}, sort: {'type': 1}})
     objectFactory.find({}, {fields: {'type': 1}, sort: {'type': 1}})
 
@@ -24,8 +24,8 @@ Template.palette.events
 
   "click .addableNode": (e, t) ->
     type = $(e.target).data('node-type')
-    label = prompt "Enter a Label"
-    return false unless label? ## Cancel on prompt
+    label = prompt "Enter a Label", type[..2]+"_"+localNodes.find({type: type}).count()
+    return false unless label? ## Cancel adding node
     newNode = objectFactory.findOne({type: type}, {fields: {_id: 0}})
     delete newNode._id
     newNode.label = label

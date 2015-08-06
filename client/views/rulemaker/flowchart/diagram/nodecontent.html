@@ -1,8 +1,9 @@
 <template name="nodeContent">
     <!-- <h4>{{labelType type}}</h4> -->
     <div class="row node-info">
-      <strong>{{type}}</strong>
-      <p>{{label}}</p>
+      <strong>{{label}}</strong>
+      <br/>
+      <small>({{type}})</small>
     </div>
     <!-- {{#if showNodeBar}} -->
     <div class="node-bar" style="{{#unless showNodeBar}}display:none;{{/unless}}">
