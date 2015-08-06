@@ -48,7 +48,17 @@ Template.diagram.onRendered ->
           #   return false
 
       localNodes.find({}).forEach (node)->
-        jsPlumb.draggable(node._id, {containment: true})
+        jsPlumb.draggable(node._id, {
+          containment: true,
+          # Store position of the node after it is dragged (for saving data)
+          stop: (evt) =>
+            elPos = $('#'+node._id).position()
+            localNodes.update {_id: node._id},
+            $set:{
+              "pos.top": elPos.top,
+              "pos.left": elPos.left
+            }
+        })
 
 
 Template.diagram.helpers

@@ -1,13 +1,44 @@
 <template name="palette">
-  {{#unless Template.subscriptionsReady}}
-    {{> spinner}}
-  {{else}}
-    <div style="margin:3em;">
+
+    <!-- <div style="margin:3em;">
       <div>
         {{#each addableNodes}}
-        <div class='btn btn-info addableNode' data-node-type='{{type}}'>{{labelType type}}</div><br/><br/>
+        <span style="display:inline;" class='btn btn-info addableNode' data-node-type='{{type}}'>{{labelType type}}</span><br/><br/>
         {{/each}}
       </div>
+    </div> -->
+  <div  id="paletteContainer">
+    {{#unless Template.subscriptionsReady}}
+      <div style="height:300px;line-height:250px;vertical-align:middle;">
+        {{> spinner}}
+      </div>
+    {{else}}
+
+    <div class="row">
+      <select id="klassList">
+        <option value="Price">Price</option>
+        <optgroup label="Indicators:">
+          <option value="IndicatorOscillator">Momentum/ Oscillator</option>
+          <option value="IndicatorBands">Moving Averages/ Bands</option>
+          <option value="IndicatorStatistical">Statistical</option>
+          <option value="IndicatorSupport">Support/ Resistance</option>
+          <option value="IndicatorEvent">Event</option>
+          <option value="IndicatorPatterns">Patterns</option>
+        </optgroup>
+        <option value="Signal">Signals</option>
+        <option value="Order">Order</option>
+      </select>
     </div>
-  {{/unless}}
+    <br/>
+    <br/>
+    <div class="row" id="addableNodeList">
+      <ul class="list-group">
+      {{#each addableNodes}}
+        <li class='list-group-item addableNode {{type}}' data-node-type='{{type}}' data-toggle="tooltip" title="Click to Add this Node">{{labelType type}}</li>
+      {{/each}}
+    </ul>
+    </div>
+
+    {{/unless}}
+  </div>
 </template>

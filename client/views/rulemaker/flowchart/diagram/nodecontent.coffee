@@ -17,6 +17,7 @@ Template.nodeContent.events
     whichNode = Session.get "flowchart.diagram.currentNode"
     label = localNodes.findOne({_id: whichNode})?.label
     newLabel = prompt "Change Label", label
+    return false unless newLabel? ## Cancel on prompt
     localNodes.update {_id: whichNode},
     $set:{
       label: newLabel

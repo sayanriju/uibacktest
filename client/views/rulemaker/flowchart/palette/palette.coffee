@@ -1,10 +1,16 @@
 Template.palette.onCreated ->
   @objectsFromFactory = @subscribe "objectsFromFactory"
+  @whichKlass = new ReactiveVar "Price"
 
+Template.palette.onRendered ->
+  @$('li[data-toggle="tooltip"]').tooltip({placement: "auto right"})
 
 Template.palette.helpers
-  addableNodes: (klass) ->
-    objectFactory.find({'klass': klass}, {fields: {'type': 1}, sort: {'type': 1}})
+  addableNodes: () ->
+    klass = Template.instance().whichKlass.get()
+    console.log klass
+    # objectFactory.find({'klass': klass}, {fields: {'type': 1}, sort: {'type': 1}})
+    objectFactory.find({}, {fields: {'type': 1}, sort: {'type': 1}})
 
   labelType: (type) ->
     if type[0..5] is "Signal"
@@ -13,9 +19,13 @@ Template.palette.helpers
       type
 
 Template.palette.events
+  "change #klassList": (e, t) ->
+    t.whichKlass.set e.target.value
+
   "click .addableNode": (e, t) ->
     type = $(e.target).data('node-type')
     label = prompt "Enter a Label"
+    return false unless label? ## Cancel on prompt
     newNode = objectFactory.findOne({type: type}, {fields: {_id: 0}})
     delete newNode._id
     newNode.label = label

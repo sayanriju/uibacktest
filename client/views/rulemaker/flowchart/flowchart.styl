@@ -1,73 +1,40 @@
-/* CSS declarations go here */
+/***********************  NEWVARIABLE DEFS   ***************************/
+$diagramHeight = 480px;
 
+// Node Colors
+.Price
+  background: #cc05c4
+.Indicator
+  background: #1672aa
+[class*='Signal']
+  background: #329571
+.Order
+  background: #8432af
 
-#nodeProperties {
-  width: 30%;
-  float:right;
-  padding:5px;
-}
-/*#diagramContainer.connectionModeOn .node:not(.unselectable) {
-  cursor: pointer;
-}*/
-// .node.activeForEditing {
-//   text-decoration: underline;
-//   font-style: italic;
-//   font-weight: bolder;
-//   background: grey;
-//   border: 5px dotted black;
-//   padding: 10px;
-// }
-.node.activeAsSrc {
-  border: 1px solid black;
-  -webkit-box-shadow: -1px 1px 13px 3px black;
--moz-box-shadow: -1px 1px 13px 3px black;
-box-shadow: -1px 1px 13px 3px black;
-}
-#diagramContainer.connectionModeOn .node.unselectable:not(.activeAsSrc) {
-  text-decoration: line-through;
-  cursor: not-allowed;
-  background: rgb(157, 150, 166);
-}
-.node.Indicator {
-  background: #1672aa;
-}
-.node.SignalCombine, .node.SignalCrossover, .node.SignalThreshold, .node.SignalFilter {
-  background-color: #329571;
-}
-.node.SignalCombine {
-  /* shape: circular */
-  border-radius: 60%;
-  padding-top: 15px;
-  /*width: 80px;
-  height: 80px;*/
-}
-.node.Order {
-  background: #8432af;
-}
-.node.Price {
-  background: #cc05c4;
-}
-.node h4{
-  vertical-align: middle;
- display: inline-block;
-}
-.connectButton {
-  display: none;
-}
-/***********************  NEW   ***************************/
-nodeShadow(n=3px)
-  -webkit-box-shadow: -1px 1px 13px n black;
-  -moz-box-shadow: -1px 1px 13px n black;
-  box-shadow: -1px 1px 13px n black;
+/***********************************************************************/
+nodeShadow(n=1px, borderColor=black, shadowColor=black)
+  border: 1px solid borderColor;
+
+  -webkit-box-shadow: -1px 1px 11px n shadowColor;
+  -moz-box-shadow: -1px 1px 11px n shadowColor;
+  box-shadow: -1px 1px 11px n shadowColor;
+
+// Set Node Colors
+// for type in Indicator Order Signal Price
+//   .{type}
+//     background: ${type}Color
+
+body
+  background-image: url(img/linen.png)
 
 #diagramContainer
   background-image: url(img/old_mathematics.png)
   padding: 20px;
   width:100%;
-  min-height: $diagramHeight = 480px;
+  min-height: $diagramHeight;
   resize:both;
   overflow: auto;
-  border: 1px solid gray;
+  border: 2px solid gray;
   /*overflow: auto;*/
   position: relative;
   &.no_selection
@@ -96,11 +63,13 @@ nodeShadow(n=3px)
       cursor: pointer;
       &:hover
         border: 1px solid black;
-        nodeShadow(1px)
+        nodeShadow(5px)
 
 
 .node
-  /*position: absolute;*/
+  position: absolute;
+  nodeShadow()
+  z-index: 999
   height:100px;
   min-width: 100px;
   padding: 5px;
@@ -136,7 +105,7 @@ nodeShadow(n=3px)
 .currentNode
   height: 100px;
   border: 1px solid black;
-  nodeShadow()
+  nodeShadow(5px, black, #E8EA4D)
 
 
 .node-bar
@@ -162,3 +131,35 @@ nodeShadow(n=3px)
       cursor: pointer;
     &.fa.text-muted
       cursor: not-allowed;
+
+/********** palette *****************/
+#paletteContainer
+  margin: 3em;
+
+#klassList
+  font-weight: bold
+  font-size: 12pt
+  & optgroup[label]
+    font-weight: normal
+    font-size: 14pt;
+    font-style: italic
+    & option
+      font-weight: bold
+      font-size: 12pt
+
+#addableNodeList
+  max-height: 0.83 * $diagramHeight;
+  overflow: auto;
+  // border: 1px solid black;
+  padding: 1em auto;
+
+.addableNode
+  // padding: 11px;
+  color: white;
+  font-weight: bold
+  cursor: pointer
+  &:hover
+    font-style: italic
+    // text-decoration: underline
+    // padding-left: 1em
+    text-align: center
