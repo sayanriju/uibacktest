@@ -7,35 +7,64 @@
         {{/each}}
       </div>
     </div> -->
-  <div  id="paletteContainer">
+  <div  id="paletteContainer" class="clearfix">
     {{#unless Template.subscriptionsReady}}
       <div style="height:300px;line-height:250px;vertical-align:middle;">
         {{> spinner}}
       </div>
     {{else}}
 
-    <div class="row">
-      <select id="klassList">
-        <option value="Price">Price</option>
-        <optgroup label="Indicators:">
-          <option value="IndicatorOscillator">Momentum/ Oscillator</option>
-          <option value="IndicatorBands">Moving Averages/ Bands</option>
-          <option value="IndicatorStatistical">Statistical</option>
-          <option value="IndicatorSupport">Support/ Resistance</option>
-          <option value="IndicatorEvent">Event</option>
-          <option value="IndicatorPatterns">Patterns</option>
-        </optgroup>
-        <option value="Signal">Signals</option>
-        <option value="Order">Order</option>
-      </select>
-    </div>
-    <br/>
-    <br/>
-    <div class="row" id="addableNodeList">
-      <ul class="list-group">
-      {{#each addableNodes}}
-        <li class='list-group-item addableNode {{type}}' data-node-type='{{type}}' data-toggle="tooltip" title="Click to Add this Node">{{labelType type}}</li>
-      {{/each}}
+    <div class="well" id="addableNodeList">
+      <!-- <button class="btn btn-xs" id="collapseAll">Collapse All</button> -->
+      <ul class="list-group clearfix">
+
+        <!-- Price -->
+        <li class="list-group-item">
+          <label title="Click to Expand/Collapse" class="tree-toggler Price">Price</label>
+          <ul class="list-group tree">
+          {{#each addableNodes "Price"}}
+            <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+          {{/each}}
+          </ul>
+        </li>
+        <!-- Indicators -->
+        <li class="list-group-item">
+          <label title="Click to Expand/Collapse" class="tree-toggler Indicator">Indicator</label>
+          <ul class="list-group tree">
+            <!-- Indicator : Momentum/Oscialltor -->
+            <li class="list-group-item">
+              <label title="Click to Expand/Collapse" class="tree-toggler Indicator"> <!-- class='subKlass' -->
+                <!-- <i class='fa fa-toggle-down' style='color:black;margin-right:5px;'></i> -->
+                Momentum/Oscillator
+              </label>
+              <ul class="list-group tree">
+              {{#each addableNodes "IndicatorMomentum"}}
+                <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+              {{/each}}
+              </ul>
+            </li>
+
+          </ul>
+        </li>
+        <!-- Signal  -->
+        <li class="list-group-item">
+          <label title="Click to Expand/Collapse" class="tree-toggler Signal">Signal</label>
+          <ul class="list-group tree">
+          {{#each addableNodes "Signal"}}
+            <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+          {{/each}}
+          </ul>
+        </li>
+        <!-- Order -->
+        <li class="list-group-item">
+          <label title="Click to Expand/Collapse" class="tree-toggler Order">Order</label>
+          <ul class="list-group tree">
+          {{#each addableNodes "Order"}}
+            <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+          {{/each}}
+          </ul>
+        </li>
+
     </ul>
     </div>
 

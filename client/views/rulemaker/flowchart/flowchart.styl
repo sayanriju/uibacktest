@@ -1,15 +1,15 @@
-/***********************  NEWVARIABLE DEFS   ***************************/
+/***********************  VARIABLE DEFS   ***************************/
 $diagramHeight = 480px;
 
 // Node Colors
 .Price
-  background: #cc05c4
-.Indicator
-  background: #1672aa
+  background-color: #cc05c4
+[class*='Indicator']
+  background-color: #1672aa
 [class*='Signal']
-  background: #329571
+  background-color: #329571
 .Order
-  background: #8432af
+  background-color: #8432af
 
 /***********************************************************************/
 nodeShadow(n=1px, borderColor=black, shadowColor=black)
@@ -134,7 +134,7 @@ body
 
 /********** palette *****************/
 #paletteContainer
-  margin: 3em;
+  // margin: 3em;
 
 #klassList
   font-weight: bold
@@ -148,14 +148,27 @@ body
       font-size: 12pt
 
 #addableNodeList
-  max-height: 0.83 * $diagramHeight;
+  min-height:  $diagramHeight + 40px; // account for the padding!
+  max-height:  $diagramHeight + 40px;
   overflow: auto;
   // border: 1px solid black;
-  padding: 1em auto;
+  // padding: 20px auto;
+  &  ul.tree
+    display: none;
+  & label.tree-toggler
+    cursor: pointer;
+    padding: 3px 11px;
+    color: white;
+    &.subKlass
+      color: black;
+      font-style: italic;
+      text-decoration: underline
+  & label.tree-toggler > i.glyphicon
+    margin-right: 5px;
 
 .addableNode
   // padding: 11px;
-  color: white;
+  color: black;
   font-weight: bold
   cursor: pointer
   &:hover

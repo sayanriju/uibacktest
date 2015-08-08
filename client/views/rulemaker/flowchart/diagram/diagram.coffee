@@ -101,7 +101,8 @@ Template.diagram.helpers
           ## then dest cannot be Order
           return true unless currentType is "SignalCombine"
       ## Src node is Indicator type
-      if srcType is "Indicator"
+      if srcType[0..8] is "Indicator"
+        console.log srcType[0..8]
         return true unless currentType in ["SignalCrossover", "SignalFilter", "SignalThreshold"]
       ## Src node is Price type
       if srcType is "Price"

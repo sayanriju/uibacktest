@@ -1,0 +1,284 @@
+[
+  {
+    "klass": "Order",
+    "type": "OrderBuy",
+    "typeLabel": "Buy Order",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 0,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Order",
+    "type": "OrderSell",
+    "typeLabel": "Sell Order",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 0,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Order",
+    "type": "OrderTakeprofit",
+    "typeLabel": "Take Profit Order",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 0,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Order",
+    "type": "OrderStoploss",
+    "typeLabel": "Stoploss Order",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 0,
+    "props": {
+
+    }
+  },
+
+
+  {
+    "klass": "Price",
+    "type": "PriceOHLC",
+    "typeLabel": "OHLC",
+    "ipPortsAvailable":0,
+    "opPortsAvailable": 999,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Price",
+    "type": "PriceHLC",
+    "typeLabel": "HLC",
+    "ipPortsAvailable": 0,
+    "opPortsAvailable": 999,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Price",
+    "type": "PriceO,H,L,C",
+    "typeLabel": "O,H,L,C",
+    "ipPortsAvailable": 0,
+    "opPortsAvailable": 999,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Price",
+    "type": "PriceTypical",
+    "typeLabel": "Typical",
+    "ipPortsAvailable": 0,
+    "opPortsAvailable": 999,
+    "props": {
+
+    }
+  },
+
+
+  {
+    "klass": "Signal",
+    "type": "SignalCrossover",
+    "typeLabel": "Crossover Signal",
+    "ipPortsAvailable": 2,
+    "opPortsAvailable": 1,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Signal",
+    "type": "SignalFilter",
+    "typeLabel": "Filter Signal",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 1,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Signal",
+    "type": "SignalThreshold",
+    "typeLabel": "Threshold Signal",
+    "ipPortsAvailable": 2,
+    "opPortsAvailable": 1,
+    "props": {
+
+    }
+  },
+  {
+    "klass": "Signal",
+    "type": "SignalCombine",
+    "typeLabel": "Combine Signal",
+    "ipPortsAvailable": 2,
+    "opPortsAvailable": 1,
+    "props": {
+
+    }
+  },
+
+
+  {
+    "klass": "IndicatorMomentum",
+    "type": "adx",
+    "typeLabel": "ADX (DMI)",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "HLC",
+      "n": 14,
+      "maType": "SMA"
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "aroon",
+    "typeLabel": "Aroon",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "HL",
+      "n": 20
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "cci",
+    "typeLabel": "CCI",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "HLC",
+      "n": 20,
+      "mType": "SMA",
+      "c": 0.015
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "cmo",
+    "typeLabel": "CMO (Chande Oscillator)",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "C",
+      "n": 14
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "dpo",
+    "typeLabel": "DPO (De-trended Oscillator)",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "C",
+      "n": 10,
+      "maType": "SMA",
+      "shift": 6,
+      "percent": false
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "kst",
+    "typeLabel": "KST (Know Sure Thing)",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "C",
+      "n": [10, 10, 10, 15],
+      "nROC": [10, 15, 20, 30],
+      "nSig": 9
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "roc",
+    "typeLabel": "ROC",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "C",
+      "n": 1
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "rsi",
+    "typeLabel": "RSI",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "C",
+      "n": 14,
+      "maType": "SMA"
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "stoch",
+    "typeLabel": "Stoch",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "HLC",
+      "nFastK": 14,
+      "nFastD": 3,
+      "nSlowD": 3,
+      "maType": "SMA"
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "tdi",
+    "typeLabel": "TDI",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "C",
+      "n": 20
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "ultosc",
+    "typeLabel": "Ultimate Oscillator",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "HLC" ,
+      "n": [7, 14, 28],
+      "wts": [4, 2, 1]
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "willad",
+    "typeLabel": "Williams AD",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "HLC"
+    }
+  },
+  {
+    "klass": "IndicatorMomentum",
+    "type": "willpercr",
+    "typeLabel": "Williams % R",
+    "ipPortsAvailable": 1,
+    "opPortsAvailable": 999,
+    "props": {
+      "price": "HLC" ,
+      "n": 14
+    }
+  }
+
+]
