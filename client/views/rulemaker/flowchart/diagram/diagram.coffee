@@ -90,23 +90,27 @@ Template.diagram.helpers
       return true if localEdges.find({src: Session.get("flowchart.diagram.selectedSrc"), dest: @._id}).count()
 
       ## Type specific checkings
-      srcType = localNodes.findOne(_id: Session.get("flowchart.diagram.selectedSrc"))?.type
-      currentType = localNodes.findOne(_id: @._id)?.type
-      ## Src node is Signal type
-      if srcType[0..5] is "Signal"
-        if srcType[6..] isnt "Filter" ## but not signal filter
+      srcNode = localNodes.findOne(_id: Session.get("flowchart.diagram.selectedSrc"))
+      srcType = srcNode.type
+      srcKlass = srcNode.klass
+      runningNode = localNodes.findOne(_id: @._id)
+      runningType = runningNode.type
+      runningKlass = runningNode.klass
+      ## Src node is a Signal
+      if srcKlass is "Signal"
+        if srcType[6..] isnt "Filter" ## but not Signal Filter
           ## then dest can either be a signal combine or an order
-          return true unless currentType in ["Order", "SignalCombine"]
+          return true unless runningKlass is "Order" or runningType is "SignalCombine"
         else ## Src is a Signal Filter
           ## then dest cannot be Order
-          return true unless currentType is "SignalCombine"
-      ## Src node is Indicator type
-      if srcType[0..8] is "Indicator"
-        console.log srcType[0..8]
-        return true unless currentType in ["SignalCrossover", "SignalFilter", "SignalThreshold"]
+          return true unless runningType is "SignalCombine"
+      ## Src node is an Indicator
+      if srcKlass[0..8] is "Indicator"
+        return true unless runningType in ["SignalCrossover", "SignalFilter", "SignalThreshold"]
       ## Src node is Price type
-      if srcType is "Price"
-        return true unless currentType in ["SignalCrossover", "SignalFilter", "SignalThreshold", "Indicator"]
+      if srcKlass is "Price"
+        unless runningType in ["SignalCrossover", "SignalFilter", "SignalThreshold"] or runningKlass[0..8] is "Indicator"
+          return true
 
       ## Src node is
 
