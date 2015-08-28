@@ -14,3 +14,6 @@ fortawesome:fontawesome
 reactive-var
 jsplumb:jsplumb
 sacha:spin
+kadira:flow-router
+kadira:blaze-layout
+accounts-password
