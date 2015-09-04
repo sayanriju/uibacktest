@@ -3,4 +3,7 @@ Meteor.publish "objectsFromFactory", (args) ->
   return objectFactory.find({}, {fields: {}})
 
 Meteor.publish "myRules", (args) ->
-  return rules.find({})
+  return Rules.find({})
+
+Meteor.publish "theQueue", (args) ->
+  return Queue.find({})

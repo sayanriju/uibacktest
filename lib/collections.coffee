@@ -10,4 +10,5 @@ Meteor.startup ->
 		else
 			console.log "Nothing added"
 
-@rules = new Mongo.Collection "rules" 
+@Rules = new Mongo.Collection "rules"
+@Queue = new Mongo.Collection "queue" 
