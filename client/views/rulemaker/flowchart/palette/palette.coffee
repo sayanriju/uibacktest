@@ -34,11 +34,11 @@ Template.palette.events
   "change #klassList": (e, t) ->
     t.whichKlass.set e.target.value
 
-  "click label.tree-toggler": (e, t) ->
+  "click label.tree-toggler, click span.toggleIcon": (e, t) ->
     $(e.target).parent().siblings('.list-group-item').children('ul.tree').hide(300);
-    $(e.target).parent().siblings('.list-group-item').children('span.fa').removeClass('fa-chevron-up')
-    $(e.target).parent().siblings('.list-group-item').children('span.fa').addClass('fa-chevron-down')
-    $(e.target).siblings('span.fa').toggleClass('fa-chevron-up fa-chevron-down')
+    $(e.target).parent().siblings('.list-group-item').children('span.toggleIcon').removeClass('fa-chevron-up')
+    $(e.target).parent().siblings('.list-group-item').children('span.toggleIcon').addClass('fa-chevron-down')
+    $(e.target).siblings('span.toggleIcon').toggleClass('fa-chevron-up fa-chevron-down')
     $(e.target).siblings('ul.tree').toggle(300);
 
   "click #collapseAll": (e, t) ->
