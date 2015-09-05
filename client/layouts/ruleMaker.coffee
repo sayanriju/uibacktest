@@ -38,7 +38,7 @@ Template.ruleMaker.helpers
   isRuleSaved: ->
     !! Session.get("ruleMaker.ruleID")?
   isInQueue: ->
-    return true
+    # return true
     !! Queue.find({_id: Session.get("ruleMaker.ruleID")?}).count()
   canViewResults: ->
     Session.get("ruleMaker.ruleID")? and not Queue.find({_id: Session.get("ruleMaker.ruleID")?}).count()
@@ -54,4 +54,13 @@ Template.ruleMaker.events
       newName = prompt "Enter New Name: ", oldName
       # if newName?
 
+  "click #viewResults": (e, t) ->
+    unless $(e.target).hasClass("disabled")
+      window.open("google.com")
+
+  "click #loadRule": (e, t) ->
+    Modal.show('exampleModal')
+
   "click #saveRule": (e, t) ->
+    unless $(e.target).hasClass("disabled")
+      console.log 'foo'

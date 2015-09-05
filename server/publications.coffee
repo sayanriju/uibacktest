@@ -9,5 +9,5 @@ Meteor.publish "theQueue", (args) ->
   return Queue.find({})
 
 Meteor.publish "myResults", (args) ->
-  myRules = Rules.find({}).fetch()
+  myRules = Rules.find({}, {fields: {_id: 1}}).fetch()
   return Results.find({ruleID: {$in: myRules}})
