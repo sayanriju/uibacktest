@@ -3,11 +3,13 @@ Meteor.publish "objectsFromFactory", (args) ->
   return objectFactory.find({}, {fields: {}})
 
 Meteor.publish "myRules", (args) ->
-  return Rules.find({})
+  return Rules.find({userId: @userId})
 
-Meteor.publish "theQueue", (args) ->
-  return Queue.find({})
+Meteor.publish "myQueue", (args) ->
+  return Queue.find({userId: @userId})
 
-Meteor.publish "myResults", (args) ->
-  myRules = Rules.find({}, {fields: {_id: 1}}).fetch()
-  return Results.find({ruleID: {$in: myRules}})
+Meteor.publish "hasResult", (ruleID) ->
+  return Results.find({ruleID: ruleID}, {fields: {ruleID: 1}})
+
+Meteor.publish "getResult", (ruleID) ->
+  return Results.find({ruleID: ruleID})

@@ -1,6 +1,6 @@
 Template.palette_addableNode.onRendered ->
   # $('li[data-toggle="tooltip"]').tooltip({placement: "auto right"})
-  console.log $('#addableNodeList').size() #append("<span class='fa fa-plus' style='color:black;'></span>")
+  # console.log $('#addableNodeList').size() #append("<span class='fa fa-plus' style='color:black;'></span>")
 
 Template.palette.onCreated ->
   @objectsFromFactory = @subscribe "objectsFromFactory"
@@ -13,7 +13,7 @@ Template.palette.onCreated ->
 
 Template.palette.onRendered ->
   # Meteor.setTimeout (->
-    console.log $('#addableNodeList').size() #append("<span class='fa fa-plus' style='color:black;'></span>")
+    # console.log $('#addableNodeList').size() #append("<span class='fa fa-plus' style='color:black;'></span>")
   # 1000)
 
 
@@ -61,8 +61,6 @@ Template.palette.events
         if t.posMatrix[0].length then t.posMatrix[0].shift() else [-50,150]
       else if newNode.klass is "Order"
         if t.posMatrix[2].length then t.posMatrix[2].shift() else [-50,300]
-
-    console.log newNode.pos
 
     localNodes.insert newNode
     # console.log localNodes.find().fetch()

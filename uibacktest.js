@@ -39,3 +39,9 @@
 //     // code to run on server at startup
 //   });
 // }
+// Template.jsonDumpModal.helpers({
+//   jsonData: function(){
+//     var q = Queue.findOne({ruleID:Session.get("ruleMaker.ruleID")});
+//     return JSON.stringify(q);
+//   }
+// });
