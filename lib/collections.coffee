@@ -11,4 +11,5 @@ Meteor.startup ->
 			console.log "Nothing added"
 
 @Rules = new Mongo.Collection "rules"
-@Queue = new Mongo.Collection "queue" 
+@Queue = new Mongo.Collection "queue"
+@Results = new Mongo.Collection "results" 

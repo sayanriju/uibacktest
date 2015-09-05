@@ -6,6 +6,7 @@ Template.ruleMaker_layout.onCreated ->
     if currentUser?
       @subscribe "myRules"
       @subscribe "theQueue"
+      @subscribe "myResults"
 
 Template.ruleMaker_layout.helpers
   readyToRoll: ->
@@ -54,5 +55,3 @@ Template.ruleMaker.events
       # if newName?
 
   "click #saveRule": (e, t) ->
-
-  

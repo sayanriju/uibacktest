@@ -34,7 +34,7 @@ Template.palette.events
   "change #klassList": (e, t) ->
     t.whichKlass.set e.target.value
 
-  "click label.tree-toggler, click span.toggleIcon": (e, t) ->
+  "click label.tree-toggler": (e, t) ->
     $(e.target).parent().siblings('.list-group-item').children('ul.tree').hide(300);
     $(e.target).parent().siblings('.list-group-item').children('span.toggleIcon').removeClass('fa-chevron-up')
     $(e.target).parent().siblings('.list-group-item').children('span.toggleIcon').addClass('fa-chevron-down')

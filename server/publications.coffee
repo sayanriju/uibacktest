@@ -7,3 +7,7 @@ Meteor.publish "myRules", (args) ->
 
 Meteor.publish "theQueue", (args) ->
   return Queue.find({})
+
+Meteor.publish "myResults", (args) ->
+  myRules = Rules.find({}).fetch()
+  return Results.find({ruleID: {$in: myRules}})
