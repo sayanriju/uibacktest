@@ -20,6 +20,21 @@ Template.ruleMaker.onCreated ->
   @addingToQueue = new ReactiveVar false
   # @autorun =>
   #   if Session.get("ruleMaker.ruleID")?
+  #     ## Empty the local nodes and edges , etc. etc.
+  #     localNodes.remove({})
+  #     localEdges.remove({})
+  #     localDataDesc.remove({})
+  #     localPrefs.remove({})
+  #     ## Now load the local stuff from loaded rule
+  #     loadedRule = Rules.findOne({_id: Session.get("ruleMaker.ruleID")})
+  #     for item in loadedRule.localNodes
+  #       localNodes.insert item
+  #     for item in loadedRule.localEdges
+  #       localEdges.insert item
+  #     for item in loadedRule.localDataDesc
+  #       localDataDesc.insert item
+  #     for item in loadedRule.localPrefs
+  #       localPrefs.insert item
 
 
 
@@ -55,6 +70,13 @@ Template.ruleMaker.helpers
 
 
 Template.ruleMaker.events
+  "click #refreshForNew": (e, t) ->
+    if localNodes.find().count() or localDataDesc.find().count()
+      return false unless confirm "You will loose all Unsaved information! Continue?"
+    # Session.set "ruleMaker.ruleID", null
+    location.reload()
+    # console.log 'reloaded'
+
   "click #addDataDesc, click #addPrefs": (e, t) ->
     alert "Format not yet provided!!!"
 

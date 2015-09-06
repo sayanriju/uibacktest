@@ -23,7 +23,7 @@ Template.loadRuleModal.events
     e.stopPropagation()
     t.selectedRule.set @._id
 
-  "click #loadSelectedRuleBtn": (e, t) ->
+  "click #loadSelectedRuleBtn, dblclick .list-group-item": (e, t) ->
     unless $(e.target).hasClass("disabled")
       Session.set "ruleMaker.ruleID", t.selectedRule.get()
       ## Empty the local nodes and edges , etc. etc.

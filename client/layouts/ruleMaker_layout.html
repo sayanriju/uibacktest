@@ -34,11 +34,11 @@
       <button type="button" id="addDataDesc" class="btn btn-primary btn-circle" rel="tooltip" title="Add Data Descriptions to Rule"><i class="fa fa-database"></i></button>
       <button type="button" id="addPrefs" class="btn btn-primary btn-circle" rel="tooltip" title="Set Preferences"><i class="fa fa-bars"></i></button>
       &nbsp;&nbsp;
-      <!-- <button type="button" id="viewResults" class="btn btn-success btn-lg {{#unless canViewResults}}disabled{{/unless}}" rel="tooltip" title="View Results in a New Tab"><i class="fa fa-line-chart" ></i>&nbsp;&nbsp;View Results</button> -->
+      <button type="button" id="refreshForNew" class="btn btn-danger btn-circle " rel="tooltip" title="Discard Current &amp; Add a New Rule"><i class="fa fa-refresh" ></i></button>
 
       <span class="pull-right">
         <button id="loadRule" class='btn btn-info btn-circle' rel="tooltip" title="Load a Previously Saved Rule"><i class="fa fa-folder-open"></i></button>
-        <button id="saveRule" class='btn btn-danger {{#if isInQueue}}disabled{{/if}} {{#if isSavingRule}}disabled{{/if}}' rel="tooltip" title="(Re)-Add to Job Queue (and also Save the Rule for posterity)">
+        <button id="saveRule" class='btn btn-danger {{#if isInQueue}}disabled{{/if}} {{#if isProcessing}}disabled{{/if}} {{#if isSavingRule}}disabled{{/if}}' rel="tooltip" title="(Re)-Add to Job Queue (and also Save the Rule for posterity)">
           {{#if isSavingRule}}
             <i class="fa fa-spinner fa-spin"></i>
           {{else}}
