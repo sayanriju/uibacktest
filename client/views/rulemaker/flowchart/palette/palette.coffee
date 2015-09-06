@@ -1,3 +1,7 @@
+Template.palette_addableNode.onRendered ->
+  # $('li[data-toggle="tooltip"]').tooltip({placement: "auto right"})
+  # console.log $('#addableNodeList').size() #append("<span class='fa fa-plus' style='color:black;'></span>")
+
 Template.palette.onCreated ->
   @objectsFromFactory = @subscribe "objectsFromFactory"
   # @whichKlass = new ReactiveVar "Price"
@@ -8,8 +12,10 @@ Template.palette.onCreated ->
   ]
 
 Template.palette.onRendered ->
-  $('li[data-toggle="tooltip"]').tooltip({placement: "auto right"})
-  $('label.subKlass').append("<span class='fa fa-plus' style='color:black;'></span>")
+  # Meteor.setTimeout (->
+    # console.log $('#addableNodeList').size() #append("<span class='fa fa-plus' style='color:black;'></span>")
+  # 1000)
+
 
 Template.palette.helpers
   addableNodes: (klass) ->
@@ -30,7 +36,9 @@ Template.palette.events
 
   "click label.tree-toggler": (e, t) ->
     $(e.target).parent().siblings('.list-group-item').children('ul.tree').hide(300);
-    $(e.target).children('span.fa').toggleClass('fa-arrow-right fa-arrow-down')
+    $(e.target).parent().siblings('.list-group-item').children('span.toggleIcon').removeClass('fa-chevron-up')
+    $(e.target).parent().siblings('.list-group-item').children('span.toggleIcon').addClass('fa-chevron-down')
+    $(e.target).siblings('span.toggleIcon').toggleClass('fa-chevron-up fa-chevron-down')
     $(e.target).siblings('ul.tree').toggle(300);
 
   "click #collapseAll": (e, t) ->
@@ -53,8 +61,6 @@ Template.palette.events
         if t.posMatrix[0].length then t.posMatrix[0].shift() else [-50,150]
       else if newNode.klass is "Order"
         if t.posMatrix[2].length then t.posMatrix[2].shift() else [-50,300]
-
-    console.log newNode.pos
 
     localNodes.insert newNode
     # console.log localNodes.find().fetch()

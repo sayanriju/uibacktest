@@ -20,26 +20,29 @@
 
         <!-- Price -->
         <li class="list-group-item">
+          <span class='fa fa-chevron-down toggleIcon' title="Click on Label to Expand/Collapse"></span>
           <label title="Click to Expand/Collapse" class="tree-toggler Price">Price</label>
           <ul class="list-group tree">
           {{#each addableNodes "Price"}}
-            <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+            {{> palette_addableNode}}
           {{/each}}
           </ul>
         </li>
         <!-- Indicators -->
         <li class="list-group-item">
+          <span class='fa fa-chevron-down toggleIcon' title="Click on Label to Expand/Collapse"></span>
           <label title="Click to Expand/Collapse" class="tree-toggler Indicator">Indicator</label>
           <ul class="list-group tree">
             <!-- Indicator : Momentum/Oscialltor -->
             <li class="list-group-item">
+              <span class='fa fa-chevron-down toggleIcon' title="Click on Label to Expand/Collapse"></span>
               <label title="Click to Expand/Collapse" class="tree-toggler Indicator"> <!-- class='subKlass' -->
                 <!-- <i class='fa fa-toggle-down' style='color:black;margin-right:5px;'></i> -->
                 Momentum/Oscillator
               </label>
               <ul class="list-group tree">
               {{#each addableNodes "IndicatorMomentum"}}
-                <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+                {{> palette_addableNode}}
               {{/each}}
               </ul>
             </li>
@@ -48,19 +51,21 @@
         </li>
         <!-- Signal  -->
         <li class="list-group-item">
+          <span class='fa fa-chevron-down toggleIcon' title="Click on Label to Expand/Collapse"></span>
           <label title="Click to Expand/Collapse" class="tree-toggler Signal">Signal</label>
           <ul class="list-group tree">
           {{#each addableNodes "Signal"}}
-            <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+            {{> palette_addableNode}}
           {{/each}}
           </ul>
         </li>
         <!-- Order -->
         <li class="list-group-item">
+          <span class='fa fa-chevron-down toggleIcon' title="Click on Label to Expand/Collapse"></span>
           <label title="Click to Expand/Collapse" class="tree-toggler Order">Order</label>
           <ul class="list-group tree">
           {{#each addableNodes "Order"}}
-            <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
+            {{> palette_addableNode}}
           {{/each}}
           </ul>
         </li>
@@ -70,4 +75,8 @@
 
     {{/unless}}
   </div>
+</template>
+
+<template name="palette_addableNode">
+  <li class='list-group-item addableNode' data-node-type='{{type}}' data-node-klass='{{klass}}' data-toggle="tooltip" title="Click to Add this Node">{{typeLabel}}</li>
 </template>

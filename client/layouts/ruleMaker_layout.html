@@ -1,0 +1,64 @@
+<template name="ruleMaker_layout">
+  {{#unless readyToRoll}}
+    {{> spinner}}
+  {{else}}
+    {{#unless currentUser}}
+      {{> loginForm}}
+    {{else}}
+      {{> ruleMaker}}
+    {{/unless}}
+  {{/unless}}
+</template>
+
+<template name="ruleMaker">
+  <div class='container'>
+    <div class="row">
+      <h2 style="border-bottom: 1px solid black;">
+        {{ruleName}}
+        <small><small>
+          &nbsp;&nbsp;{{savedAt}}
+        {{#if isInQueue}}
+          <span class="label label-warning pull-right throbbingLabel">Queued</span>
+        {{else}}
+          {{#if isProcessing}}
+            <span class="label label-info pull-right throbbingLabel">Processing</span>
+          {{else}}
+            {{#if canViewResults}}
+              <button type="button" id="viewResults" class="pull-right btn btn-success btn-xs {{#unless canViewResults}}disabled{{/unless}}" rel="tooltip" title="View Results"><i class="fa fa-line-chart" ></i>&nbsp;&nbsp;View Results</button>
+            {{/if}}
+          {{/if}}
+        {{/if}}
+        </small> </small>
+      </h2>
+      <button type="button" id="editRuleName" class="btn btn-info btn-circle {{#unless isRuleSaved}}disabled{{/unless}}" rel="tooltip" title="Edit Rule Name"><i class="fa fa-font"></i></button>
+      <button type="button" id="addDataDesc" class="btn btn-primary btn-circle" rel="tooltip" title="Add Data Descriptions to Rule"><i class="fa fa-database"></i></button>
+      <button type="button" id="addPrefs" class="btn btn-primary btn-circle" rel="tooltip" title="Set Preferences"><i class="fa fa-bars"></i></button>
+      &nbsp;&nbsp;
+      <button type="button" id="refreshForNew" class="btn btn-danger btn-circle " rel="tooltip" title="Discard Current &amp; Add a New Rule"><i class="fa fa-refresh" ></i></button>
+
+      <span class="pull-right">
+        <button id="loadRule" class='btn btn-info btn-circle' rel="tooltip" title="Load a Previously Saved Rule"><i class="fa fa-folder-open"></i></button>
+        <button id="saveRule" class='btn btn-danger {{#if isInQueue}}disabled{{/if}} {{#if isProcessing}}disabled{{/if}} {{#if isSavingRule}}disabled{{/if}}' rel="tooltip" title="(Re)-Add to Job Queue (and also Save the Rule for posterity)">
+          {{#if isSavingRule}}
+            <i class="fa fa-spinner fa-spin"></i>
+          {{else}}
+            <i class="fa fa-play"></i>
+          {{/if}}
+          &nbsp;&nbsp;Add Rule to Job Queue
+        </button>
+      </span>
+      <hr/>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class='row'>
+      <div class='col-lg-3' id='palette'>
+        {{> palette}}
+      </div>
+      <div class='col-lg-9' id='diagram'>
+        {{> diagram}}
+      </div>
+    </div>
+  </div>
+</template>

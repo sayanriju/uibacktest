@@ -1,0 +1,35 @@
+<template name="loadRuleModal">
+  <div class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h4 class="modal-title">List of Previously Saved Rules</h4>
+        </div>
+
+        <div class="modal-body" style="max-height:300px; overflow:auto;">
+          <div class="list-group">
+            {{#each listRules}}
+            <a href="#" class="list-group-item {{#if isActive}}active{{/if}}">
+              <h4 class="list-group-item-heading">{{name}}</h4>
+              <small class="{{#unless isActive}}text-muted{{/unless}}"><em>Saved At: {{momentFormat savedAt}}</em></small>
+            </a>
+            {{/each}}
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          {{#if showWarning}}
+            <div class="alert alert-warning text-justify" role="alert">
+              <strong>WARNING:  </strong>
+              Loading a Rule from here shall permanently Overwrite all Unsaved Data, if any!
+            </div>
+          {{/if}}
+          <button type="button" class="btn btn-lg btn-primary {{#if nothingSelected}}disabled{{/if}}" id="loadSelectedRuleBtn">Load Selected Rule</button>
+          <button type="button" class="btn btn-default btn-danger" data-dismiss="modal" id="cancelLoadingRuleBtn">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</template>

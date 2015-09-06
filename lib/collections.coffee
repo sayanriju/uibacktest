@@ -9,3 +9,7 @@ Meteor.startup ->
 			console.log "added prototype objects...."
 		else
 			console.log "Nothing added"
+
+@Rules = new Mongo.Collection "rules"
+@Queue = new Mongo.Collection "queue"
+@Results = new Mongo.Collection "results" 
