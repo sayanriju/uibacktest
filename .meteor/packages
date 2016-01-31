@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
 insecure
 mquandalle:jade
 coffeescript
@@ -21,3 +20,18 @@ peppelg:bootstrap-3-modal
 random
 momentjs:moment
 chrismbeckett:toastr
+matb33:collection-hooks
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+ejson
+spacebars
+check
+msavin:mongol

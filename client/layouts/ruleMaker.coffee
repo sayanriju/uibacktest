@@ -4,9 +4,9 @@ Template.ruleMaker_layout.onCreated ->
   @autorun =>
     currentUser = Meteor.userId()
     if currentUser?
-      @subscribe "myRules"
+      @subscribe "myRules", {}
       @subscribe "myQueue"
-      @subscribe "hasResult", Session.get("ruleMaker.ruleID")
+      # @subscribe "hasResult", Session.get("ruleMaker.ruleID")
 
 
 Template.ruleMaker_layout.helpers
@@ -19,6 +19,8 @@ Template.ruleMaker.onCreated ->
   @savingRule = new ReactiveVar false
   @addingToQueue = new ReactiveVar false
   # @autorun =>
+  #   @subscribe "hasResult", Session.get("ruleMaker.ruleID")
+
   #   if Session.get("ruleMaker.ruleID")?
   #     ## Empty the local nodes and edges , etc. etc.
   #     localNodes.remove({})
@@ -64,9 +66,9 @@ Template.ruleMaker.helpers
     Session.get("ruleMaker.ruleID")? and Queue.find({ruleID: Session.get("ruleMaker.ruleID")}).count()
   isProcessing: ->
     # return true
-    Session.get("ruleMaker.ruleID")? and not Queue.find({ruleID: Session.get("ruleMaker.ruleID")}).count() and not Results.find({ruleID: Session.get("ruleMaker.ruleID")}).count()
+    Session.get("ruleMaker.ruleID")? and not Queue.find({ruleID: Session.get("ruleMaker.ruleID")}).count() and not Rule.findOne({_id: Session.get("ruleMaker.ruleID")}).hasResult
   canViewResults: ->
-    Session.get("ruleMaker.ruleID")? and Results.find({ruleID: Session.get("ruleMaker.ruleID")}).count() and not Queue.find({ruleID: Session.get("ruleMaker.ruleID")}).count() and not Template.instance().addingToQueue.get()
+    Session.get("ruleMaker.ruleID")? and Rule.findOne({_id: Session.get("ruleMaker.ruleID")}).hasResult and not Queue.find({ruleID: Session.get("ruleMaker.ruleID")}).count() and not Template.instance().addingToQueue.get()
 
 
 Template.ruleMaker.events
@@ -89,7 +91,7 @@ Template.ruleMaker.events
 
   "click #viewResults": (e, t) ->
     unless $(e.target).hasClass("disabled")
-      unless Results.find({ruleID: Session.get "ruleMaker.ruleID"}).count()
+      unless Rule.findOne({_id: Session.get("ruleMaker.ruleID")}).hasResult
         alert "Results not yet ready!"
       window.open("google.com")
 
@@ -99,7 +101,7 @@ Template.ruleMaker.events
   "click #saveRule": (e, t) ->
     unless $(e.target).hasClass("disabled")
       if Session.get("ruleMaker.ruleID")?
-        return unless confirm "A New Rule shall be saved and added to Job Queue.\nPress Cancel if this is not what you want."
+        return unless confirm "Your Rule shall be Overwritten with the changes (if any) and re-added to Job Queue.\nPress Cancel if this is not what you want."
 
       if localNodes.find().count() is 0
         return unless confirm "You haven't added any Nodes to your rule!
@@ -110,12 +112,15 @@ Template.ruleMaker.events
 
       t.savingRule.set(true)
       ruleSaveObj =
+        # ruleID : Session.get("ruleMaker.ruleID") if Session.get("ruleMaker.ruleID")?
+        # name = Rules.findOne({_id: Session.get("ruleMaker.ruleID")})?.name if Session.get("ruleMaker.ruleID")?
         localNodes: localNodes.find({}).fetch()
         localEdges: localEdges.find({}).fetch()
         localDataDesc: localDataDesc.find({}).fetch()
         localPrefs: localPrefs.find({}).fetch()
+      ruleSaveObj.ruleID = Session.get("ruleMaker.ruleID") if Session.get("ruleMaker.ruleID")?
 
-      Meteor.call "saveRule", ruleSaveObj, (error, ruleID) ->
+      Meteor.call "upsertRule", ruleSaveObj, (error, ruleID) ->
         if error
           console.log "error", error
           t.savingRule.set(false)
